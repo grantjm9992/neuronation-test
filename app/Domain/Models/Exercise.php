@@ -13,6 +13,7 @@ class Exercise extends Model
 
     protected $fillable = [
         'course_id',
+        'category_id',
         'name',
         'points',
     ];

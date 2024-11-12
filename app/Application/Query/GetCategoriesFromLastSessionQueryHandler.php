@@ -26,7 +26,7 @@ class GetCategoriesFromLastSessionQueryHandler
             throw new NoSessionForUserException();
         }
         $data = $this->domainCategoryRepository->getDomainCategoriesForSession(
-            $lastUserSession->id
+            $lastUserSession->session_id
         );
 
         return LastSessionViewFactory::create($data);

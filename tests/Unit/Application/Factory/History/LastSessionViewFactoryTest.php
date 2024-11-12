@@ -10,15 +10,13 @@ class LastSessionViewFactoryTest extends TestCase
 {
     public function testCreate(): void
     {
+        $category1 = new \stdClass();
+        $category1->name = 'Memory';
+        $category2 = new \stdClass();
+        $category2->name = 'Concentration';
         $categoryArray = [
-            [
-                'id' => 1,
-                'name' => 'Memory',
-            ],
-            [
-                'id' => 2,
-                'name' => 'Concentration',
-            ],
+            $category1,
+            $category2,
         ];
         $viewFactory = new LastSessionViewFactory();
         $view = $viewFactory::create($categoryArray);

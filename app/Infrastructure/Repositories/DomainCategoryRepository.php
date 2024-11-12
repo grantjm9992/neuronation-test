@@ -20,7 +20,7 @@ readonly class DomainCategoryRepository implements DomainCategoryRepositoryInter
                         ON scores.exercise_id = e.exercise_id
                     LEFT JOIN 
                         domain_categories d
-                            ON exercises.category_id = d.category_id 
+                            ON e.category_id = d.category_id 
             WHERE scores.session_id = ?
         EOD;
 
