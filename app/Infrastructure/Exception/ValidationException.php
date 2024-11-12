@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace app\Infrastructure\Exception;
+namespace App\Infrastructure\Exception;
 
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
@@ -11,5 +11,10 @@ class ValidationException extends HttpException implements ExceptionInterface
     public function __construct(string $message)
     {
         parent::__construct(self::CODE, $message);
+    }
+
+    public function _getCode(): int
+    {
+        return 422;
     }
 }

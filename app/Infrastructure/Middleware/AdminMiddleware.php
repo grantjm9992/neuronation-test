@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Infrastructure\Middleware;
+namespace App\Infrastructure\Middleware;
 
-use app\Domain\ValueObject\UserRole;
+use App\Domain\ValueObject\UserRole;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

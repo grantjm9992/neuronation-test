@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Infrastructure\Middleware;
+namespace App\Infrastructure\Middleware;
 
 use App\Models\CoreContext\Subscription;
 use App\ValueObject\SubscriptionStatus;

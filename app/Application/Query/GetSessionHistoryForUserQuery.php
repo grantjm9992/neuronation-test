@@ -5,8 +5,8 @@ namespace App\Application\Query;
 class GetSessionHistoryForUserQuery
 {
     public function __construct(
-        private string $userId,
-        private int $limit
+        private readonly string $userId,
+        private readonly int $limit
     ) {
     }
 

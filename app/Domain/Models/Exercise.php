@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Domain\Models;
+namespace App\Domain\Models;
 
-use app\Domain\Traits\Uuids;
+use App\Domain\Traits\Uuids;
 use Illuminate\Database\Eloquent\Model;
 
 class Exercise extends Model

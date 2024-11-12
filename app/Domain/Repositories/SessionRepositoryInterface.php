@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Domain\Repositories;
+namespace App\Domain\Repositories;
 
-use app\Domain\Models\Session;
+use App\Domain\Models\Session;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 

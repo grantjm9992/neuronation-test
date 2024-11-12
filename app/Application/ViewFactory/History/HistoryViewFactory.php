@@ -3,7 +3,7 @@
 namespace App\Application\ViewFactory\History;
 
 use App\Application\ViewFactory\AbstractViewFactory;
-use app\Domain\View\HistoryView;
+use App\Domain\View\HistoryView;
 use Illuminate\Database\Eloquent\Collection;
 
 class HistoryViewFactory

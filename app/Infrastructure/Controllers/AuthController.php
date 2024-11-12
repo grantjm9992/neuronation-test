@@ -1,19 +1,19 @@
 <?php declare(strict_types=1);
 
-namespace app\Infrastructure\Controllers;
+namespace App\Infrastructure\Controllers;
 
-use app\Domain\Enum\UserRole;
-use app\Domain\Enum\UserStatus;
-use app\Domain\Models\User;
+use App\Application\Services\Auth\Login\LogInWithCredentialsServiceInterface;
+use App\Application\Services\Auth\Register\RegisterUserServiceInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function __construct()
-    {
+    public function __construct(
+        private readonly LogInWithCredentialsServiceInterface $logInUserService,
+        private readonly RegisterUserServiceInterface $registerUserService,
+    ) {
         $this->middleware('auth:api', [
             'except' => ['login', 'register'],
         ]);
@@ -25,26 +25,11 @@ class AuthController extends Controller
             'email' => 'required|string|email',
             'password' => 'required|string',
         ]);
+
         $credentials = $request->only('email', 'password');
+        $response = $this->logInUserService->__invoke($credentials);
 
-        $token = Auth::attempt($credentials);
-        if (!$token) {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Unauthorized',
-            ], 401);
-        }
-
-        $user = Auth::user()->toArray();
-
-        return response()->json([
-            'status' => 'success',
-            'user' => $user,
-            'authorisation' => [
-                'token' => $token,
-                'type' => 'bearer',
-            ],
-        ]);
+        return response()->json($response);
     }
 
     public function register(Request $request): JsonResponse
@@ -54,29 +39,12 @@ class AuthController extends Controller
             'password' => 'required|string|min:6',
         ]);
 
-        $user = User::where('email', $request->email)->first();
-        if ($user !== null) {
-            throw new \Exception('User already exists');
-        }
+        $response = $this->registerUserService->__invoke(
+            email: $request->get('email'),
+            password: $request->get('password'),
+        );
 
-        $user = User::create([
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'user_role' => UserRole::USER->value,
-            'user_status' => UserStatus::ACTIVE->value,
-        ]);
-
-        $token = Auth::login($user);
-
-        return response()->json([
-            'status' => 'success',
-            'message' => 'User created successfully',
-            'user' => $user,
-            'authorisation' => [
-                'token' => $token,
-                'type' => 'bearer',
-            ],
-        ]);
+        return response()->json($response);
     }
 
     public function logout(): JsonResponse

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace app\Domain\Models;
+namespace App\Domain\Models;
 
-use app\Domain\Traits\Uuids;
+use App\Domain\Traits\Uuids;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -18,7 +18,7 @@ class User extends Authenticatable implements JWTSubject
     use HasApiTokens;
     use HasFactory;
     use Notifiable;
-    use Billable;
+    protected $primaryKey = 'user_id';
 
     /**
      * The attributes that are mass assignable.
@@ -27,6 +27,7 @@ class User extends Authenticatable implements JWTSubject
      */
     protected $fillable = [
         'username',
+        'email',
         'password',
         'user_role',
         'status',

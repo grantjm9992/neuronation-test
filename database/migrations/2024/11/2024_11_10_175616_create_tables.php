@@ -39,12 +39,24 @@ return new class extends Migration
             ]);
         });
 
+        Schema::create('course_exercise', function (Blueprint $table) {
+            $table->id('course_exercise_id');
+            $table->foreignId('course_id')->constrained('courses', 'course_id')->onDelete('cascade');
+            $table->foreignId('exercise_id')->constrained('exercises', 'exercise_id')->onDelete('cascade');
+            $table->timestamps();
+            $table->index([
+                'course_id',
+                'exercise_id',
+            ]);
+        });
+
         Schema::create('sessions', function (Blueprint $table) {
             $table->id('session_id');
             $table->foreignId('course_id')->constrained('courses', 'course_id')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users', 'user_id')->onDelete('cascade');
             $table->timestamp('timestamp')->useCurrent();
-            $table->integer('score');
+            $table->integer('score')->nullable();
+            $table->string('normalized_score')->nullable();
             $table->timestamps();
             $table->index(['user_id', 'timestamp']);
         });
@@ -71,6 +83,20 @@ return new class extends Migration
      */
     public function down(): void
     {
-
+        Schema::table('sessions', function (Blueprint $table) {
+            $table->dropIfExists();
+        });
+        Schema::table('scores', function (Blueprint $table) {
+            $table->dropIfExists();
+        });
+        Schema::table('exercises', function (Blueprint $table) {
+            $table->dropIfExists();
+        });
+        Schema::table('domain_categories', function (Blueprint $table) {
+            $table->dropIfExists();
+        });
+        Schema::table('courses', function (Blueprint $table) {
+            $table->dropIfExists();
+        });
     }
 };

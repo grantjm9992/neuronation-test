@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace app\Infrastructure\Controllers;
+namespace App\Infrastructure\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -15,10 +15,4 @@ class Controller extends BaseController
     use AuthorizesRequests;
     use DispatchesJobs;
     use ValidatesRequests;
-
-    protected function getUserId(): string
-    {
-        return 'erew';
-        return Auth::user()->getAuthIdentifier();
-    }
 }

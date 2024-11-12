@@ -1,16 +1,16 @@
 <?php
 
-namespace app\Infrastructure\Repositories;
+namespace App\Infrastructure\Repositories;
 
-use app\Domain\Models\Session;
-use app\Domain\Repositories\SessionRepositoryInterface;
+use App\Domain\Models\Session;
+use App\Domain\Repositories\SessionRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 class SessionRepository implements SessionRepositoryInterface
 {
     public function __construct(
-        private Session $session
+        private readonly Session $session
     ) {
     }
 

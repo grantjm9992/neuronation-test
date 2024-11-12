@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace App\Exceptions;
 
+use App\Infrastructure\Exception\ExceptionInterface;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -44,8 +47,14 @@ class Handler extends ExceptionHandler
         });
     }
 
-    public function render($request, Throwable $e)
+    public function render($request, Throwable $e): \Illuminate\Http\Response|JsonResponse|Response
     {
+        if ($e instanceof ExceptionInterface) {
+            return response()->json([
+                'error' => $e->getMessage(),
+            ], $e->_getCode());
+        }
+
         if ($e instanceof ValidationException) {
             return response()->json([
                 'status' => 'error',

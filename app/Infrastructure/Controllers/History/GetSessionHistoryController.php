@@ -1,25 +1,28 @@
 <?php
 
-namespace app\Infrastructure\Controllers\History;
+namespace App\Infrastructure\Controllers\History;
 
-use App\Application\Query\GetCategoriesFromLastSessionQuery;
-use App\Application\Query\GetCategoriesFromLastSessionQueryHandler;
+use App\Application\Query\GetSessionHistoryForUserQuery;
+use App\Application\Query\GetSessionHistoryForUserQueryHandler;
+use App\Application\Services\Auth\Session\GetLoggedInUserServiceInterface;
 use App\Infrastructure\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class GetSessionHistoryController extends Controller
 {
     public function __construct(
-        private readonly GetCategoriesFromLastSessionQueryHandler $handler
+        private readonly GetSessionHistoryForUserQueryHandler $handler,
+        private readonly GetLoggedInUserServiceInterface $getLoggedInUserService,
     ) {
     }
 
-    public function __invoke(Request $request): JsonResponse
+    public function __invoke(): JsonResponse
     {
-        $query = new GetCategoriesFromLastSessionQuery(
-            userId: $this->getUserId()
+        $query = new GetSessionHistoryForUserQuery(
+            userId: $this->getLoggedInUserService->getUserId(),
+            limit: 12
         );
+
         $response = $this->handler->__invoke(
             query: $query
         );

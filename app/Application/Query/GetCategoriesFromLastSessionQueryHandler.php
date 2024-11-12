@@ -2,11 +2,11 @@
 
 namespace App\Application\Query;
 
-use App\Application\ViewFactory\LastSessionViewFactory;
-use app\Domain\Repositories\DomainCategoryRepositoryInterface;
-use app\Domain\Repositories\SessionRepositoryInterface;
-use app\Domain\View\LastSessionDetailView;
-use app\Infrastructure\Exception\NoSessionForUserException;
+use App\Application\ViewFactory\History\LastSessionViewFactory;
+use App\Domain\Repositories\DomainCategoryRepositoryInterface;
+use App\Domain\Repositories\SessionRepositoryInterface;
+use App\Domain\View\LastSessionDetailView;
+use App\Infrastructure\Exception\NoSessionForUserException;
 
 class GetCategoriesFromLastSessionQueryHandler
 {

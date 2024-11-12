@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Infrastructure\Repositories;
+namespace App\Infrastructure\Repositories;
 
-use app\Domain\Repositories\DomainCategoryRepositoryInterface;
+use App\Domain\Repositories\DomainCategoryRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 
@@ -15,7 +15,7 @@ class DomainCategoryRepository implements DomainCategoryRepositoryInterface
                 d.name
             FROM 
                 scores
-            LEFT JOIN 
+            LEFT JOIN   
                     exercises e 
                         ON scores.exercise_id = e.exercise_id
                     LEFT JOIN 

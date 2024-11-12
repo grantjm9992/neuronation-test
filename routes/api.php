@@ -1,8 +1,8 @@
 <?php
 
-use app\Infrastructure\Controllers\AuthController;
-use app\Infrastructure\Controllers\History\GetCategoriesForLastSessionController;
-use app\Infrastructure\Controllers\History\GetSessionHistoryController;
+use App\Infrastructure\Controllers\AuthController;
+use App\Infrastructure\Controllers\History\GetCategoriesForLastSessionController;
+use App\Infrastructure\Controllers\History\GetSessionHistoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

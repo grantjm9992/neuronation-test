@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Domain\View;
+namespace App\Domain\View;
 
 class LastSessionDetailView
 {

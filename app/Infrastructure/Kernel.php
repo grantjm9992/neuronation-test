@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace app\Infrastructure;
+namespace App\Infrastructure;
 
-use app\Infrastructure\Middleware\SubscriptionMiddleware;
-use app\Infrastructure\Middleware\TimeTrackingContextMiddleware;
+use App\Infrastructure\Middleware\SubscriptionMiddleware;
+use App\Infrastructure\Middleware\TimeTrackingContextMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -19,11 +19,11 @@ class Kernel extends HttpKernel
      */
     protected $middleware = [
         // \App\Http\Middleware\TrustHosts::class,
-        \app\Infrastructure\Middleware\TrustProxies::class,
+        \App\Infrastructure\Middleware\TrustProxies::class,
         \Illuminate\Http\Middleware\HandleCors::class,
-        \app\Infrastructure\Middleware\PreventRequestsDuringMaintenance::class,
+        \App\Infrastructure\Middleware\PreventRequestsDuringMaintenance::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
-        \app\Infrastructure\Middleware\TrimStrings::class,
+        \App\Infrastructure\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
     ];
 
@@ -34,11 +34,11 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-            \app\Infrastructure\Middleware\EncryptCookies::class,
+            \App\Infrastructure\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \app\Infrastructure\Middleware\VerifyCsrfToken::class,
+            \App\Infrastructure\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
@@ -57,17 +57,17 @@ class Kernel extends HttpKernel
      * @var array<string, class-string|string>
      */
     protected $routeMiddleware = [
-        'auth' => \app\Infrastructure\Middleware\Authenticate::class,
+        'auth' => \App\Infrastructure\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest' => \app\Infrastructure\Middleware\RedirectIfAuthenticated::class,
+        'guest' => \App\Infrastructure\Middleware\RedirectIfAuthenticated::class,
         'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
-        'signed' => \app\Infrastructure\Middleware\ValidateSignature::class,
+        'signed' => \App\Infrastructure\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'jwt.verify' => \app\Infrastructure\Middleware\JwtMiddleware::class,
+        'jwt.verify' => \App\Infrastructure\Middleware\JwtMiddleware::class,
         'subscription' => SubscriptionMiddleware::class,
         'time.tracking' => TimeTrackingContextMiddleware::class,
     ];

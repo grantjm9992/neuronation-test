@@ -3,12 +3,12 @@
 namespace App\Application\Query;
 
 use App\Application\ViewFactory\History\HistoryViewFactory;
-use app\Domain\Repositories\SessionRepositoryInterface;
+use App\Domain\Repositories\SessionRepositoryInterface;
 
 class GetSessionHistoryForUserQueryHandler
 {
     public function __construct(
-        private SessionRepositoryInterface $sessionRepository
+        private readonly SessionRepositoryInterface $sessionRepository
     ) {
     }
 
@@ -19,8 +19,12 @@ class GetSessionHistoryForUserQueryHandler
             limit: $query->getLimit(),
         );
 
-        return HistoryViewFactory::createCollection(
+        $history = HistoryViewFactory::createCollection(
             $history->toArray()
         );
+
+        return [
+            'history' => $history
+        ];
     }
 }

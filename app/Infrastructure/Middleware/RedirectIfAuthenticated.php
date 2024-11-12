@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace app\Infrastructure\Middleware;
+namespace App\Infrastructure\Middleware;
 
 use App\Providers\RouteServiceProvider;
 use Closure;

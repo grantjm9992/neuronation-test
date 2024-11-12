@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace app\Domain\Traits;
+namespace App\Domain\Traits;
 
 use Ramsey\Uuid\Uuid;
 
