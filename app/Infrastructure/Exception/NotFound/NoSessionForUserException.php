@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Infrastructure\Exception;
+namespace App\Infrastructure\Exception\NotFound;
 
+use App\Infrastructure\Exception\ExceptionInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class NoSessionForUserException extends NotFoundHttpException implements ExceptionInterface

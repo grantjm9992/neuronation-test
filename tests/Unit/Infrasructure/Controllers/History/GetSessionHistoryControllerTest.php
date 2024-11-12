@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Infrastructure\Controllers\History;
+namespace Tests\Unit\Infrasructure\Controllers\History;
 
 use App\Application\Query\GetSessionHistoryForUserQueryHandler;
 use App\Application\Services\Auth\Session\GetLoggedInUserServiceInterface;
@@ -16,13 +16,14 @@ class GetSessionHistoryControllerTest extends TestCase
         $queryHandler->expects($this->once())
             ->method('__invoke')
             ->willReturn(
-                [new HistoryView(1, 1)]
+                [new HistoryView(1, 1, 1)]
             );
 
         $getUserService = $this->createMock(GetLoggedInUserServiceInterface::class);
         $getUserService->expects($this->once())
             ->method('getUserId')
             ->willReturn(1);
+
         $controller = new GetSessionHistoryController(
             $queryHandler,
             $getUserService

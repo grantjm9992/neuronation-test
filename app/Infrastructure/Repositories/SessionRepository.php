@@ -7,10 +7,10 @@ use App\Domain\Repositories\SessionRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
-class SessionRepository implements SessionRepositoryInterface
+readonly class SessionRepository implements SessionRepositoryInterface
 {
     public function __construct(
-        private readonly Session $session
+        private Session $session
     ) {
     }
 
@@ -19,6 +19,7 @@ class SessionRepository implements SessionRepositoryInterface
         return $this->session
             ->newQuery()
             ->select([
+                'normalized_score',
                 'score',
                 'timestamp',
             ])
@@ -35,5 +36,15 @@ class SessionRepository implements SessionRepositoryInterface
             ->where('user_id', $userId)
             ->orderBy('timestamp', 'DESC')
             ->first();
+    }
+
+    public function save(array $session): void
+    {
+        $this->session::create($session);
+    }
+
+    public function findById(int $id): ?Model
+    {
+        return $this->session::find($id);
     }
 }

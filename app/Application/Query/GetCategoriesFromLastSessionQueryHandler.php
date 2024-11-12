@@ -6,7 +6,7 @@ use App\Application\ViewFactory\History\LastSessionViewFactory;
 use App\Domain\Repositories\DomainCategoryRepositoryInterface;
 use App\Domain\Repositories\SessionRepositoryInterface;
 use App\Domain\View\LastSessionDetailView;
-use App\Infrastructure\Exception\NoSessionForUserException;
+use App\Infrastructure\Exception\NotFound\NoSessionForUserException;
 
 class GetCategoriesFromLastSessionQueryHandler
 {

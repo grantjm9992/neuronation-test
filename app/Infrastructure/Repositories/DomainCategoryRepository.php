@@ -6,7 +6,7 @@ use App\Domain\Repositories\DomainCategoryRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 
-class DomainCategoryRepository implements DomainCategoryRepositoryInterface
+readonly class DomainCategoryRepository implements DomainCategoryRepositoryInterface
 {
     public function getDomainCategoriesForSession(string $sessionId): array|Collection
     {

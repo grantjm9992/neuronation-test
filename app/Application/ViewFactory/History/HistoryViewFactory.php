@@ -13,9 +13,11 @@ class HistoryViewFactory
     public static function create(
         array $session
     ): HistoryView {
+
         return new HistoryView(
             $session['score'],
-            $session['timestamp'],
+            $session['normalized_score'],
+            strtotime($session['timestamp']),
         );
     }
 }

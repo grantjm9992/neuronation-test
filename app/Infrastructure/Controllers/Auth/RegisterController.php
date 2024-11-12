@@ -12,9 +12,6 @@ class RegisterController extends Controller
     public function __construct(
         private readonly RegisterUserServiceInterface $registerUserService,
     ) {
-        $this->middleware('auth:api', [
-            'except' => ['login', 'register'],
-        ]);
     }
 
     public function __invoke(Request $request): JsonResponse

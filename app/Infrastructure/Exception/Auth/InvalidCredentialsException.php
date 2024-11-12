@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Infrastructure\Exception;
+namespace App\Infrastructure\Exception\Auth;
+
+use App\Infrastructure\Exception\ExceptionInterface;
 
 class InvalidCredentialsException extends \Exception implements ExceptionInterface
 {

@@ -11,4 +11,8 @@ interface SessionRepositoryInterface
     public function getHistoryForUser(string $userId, int $limit = 12): Collection|array;
 
     public function findLastSessionForUser(string $userId): ?Model;
+
+    public function save(array $session): void;
+
+    public function findById(int $id): ?Model;
 }

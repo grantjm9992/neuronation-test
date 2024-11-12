@@ -55,8 +55,8 @@ return new class extends Migration
             $table->foreignId('course_id')->constrained('courses', 'course_id')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users', 'user_id')->onDelete('cascade');
             $table->timestamp('timestamp')->useCurrent();
-            $table->integer('score')->nullable();
-            $table->string('normalized_score')->nullable();
+            $table->integer('score')->nullable()->default(null);
+            $table->string('normalized_score')->nullable()->default(null);
             $table->timestamps();
             $table->index(['user_id', 'timestamp']);
         });

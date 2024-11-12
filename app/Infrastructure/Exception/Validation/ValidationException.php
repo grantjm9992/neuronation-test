@@ -1,7 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace App\Infrastructure\Exception;
+namespace App\Infrastructure\Exception\Validation;
 
+use App\Infrastructure\Exception\ExceptionInterface;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class ValidationException extends HttpException implements ExceptionInterface

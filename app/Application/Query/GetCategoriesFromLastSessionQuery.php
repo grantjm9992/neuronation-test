@@ -2,10 +2,10 @@
 
 namespace App\Application\Query;
 
-class GetCategoriesFromLastSessionQuery
+readonly class GetCategoriesFromLastSessionQuery
 {
     public function __construct(
-        private readonly string $userId
+        private string $userId
     ) {
     }
 

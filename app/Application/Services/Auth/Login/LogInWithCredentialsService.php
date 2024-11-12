@@ -4,7 +4,7 @@ namespace App\Application\Services\Auth\Login;
 
 use App\Application\ViewFactory\Auth\Login\UserLoggedInViewFactory;
 use App\Domain\View\Auth\UserLoggedInView;
-use App\Infrastructure\Exception\InvalidCredentialsException;
+use App\Infrastructure\Exception\Auth\InvalidCredentialsException;
 use Illuminate\Support\Facades\Auth;
 
 class LogInWithCredentialsService implements LogInWithCredentialsServiceInterface

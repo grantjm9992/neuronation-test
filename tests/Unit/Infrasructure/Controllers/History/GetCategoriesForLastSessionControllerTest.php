@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Infrastructure\Controllers\History;
+namespace Tests\Unit\Infrasructure\Controllers\History;
 
 use App\Application\Query\GetCategoriesFromLastSessionQueryHandler;
 use App\Application\Services\Auth\Session\GetLoggedInUserServiceInterface;

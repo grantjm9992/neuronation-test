@@ -9,7 +9,7 @@ use App\Domain\Enum\UserRole;
 use App\Domain\Enum\UserStatus;
 use App\Domain\Repositories\UserRepositoryInterface;
 use App\Domain\View\Auth\UserRegisteredView;
-use App\Infrastructure\Exception\UserAlreadyExistsException;
+use App\Infrastructure\Exception\Validation\UserAlreadyExistsException;
 
 class RegisterUserService implements RegisterUserServiceInterface
 {
