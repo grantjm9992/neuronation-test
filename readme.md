@@ -169,6 +169,15 @@ Response
   "history": "Recently trained: Category1, Category2"
 }
 ```
+---
+
+## Testing
+
+To run all tests included in the project, run:
+
+```BASH
+make run-tests
+```
 
 ---
 
